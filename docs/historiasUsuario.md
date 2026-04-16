@@ -1,7 +1,5 @@
-# Historias de usuarios
 
-
-## Gestión de Inventarios
+# Gestión de Inventarios
 
 ## Historia de usuario No.1
 El sistema debe permitir la creación y mantenimiento de un catálogo de productos con detalles como nombre, descripción, número de artículo, categoría, precio y cantidad en stock.
@@ -58,7 +56,7 @@ Como usuario, quiero identificar rápidamente los productos con stock bajo, para
 - Dado que el usuario accede al catálogo, entonces debe existir una opción para filtrar o identificar fácilmente los productos con stock bajo.
 - Dado que un producto tiene stock suficiente, entonces no debe mostrarse como alerta ni destacarse visualmente.
 
-## Registro de Ventas y Compras
+# Registro de Ventas y Compras
 
 ### Historia de usuario No1.1
 
@@ -152,7 +150,7 @@ Como administrador, quiero visualizar todas las transacciones eso incluye órden
     - Fecha
     - Total
 
-## Gestión de Proveedores
+# Gestión de Proveedores
 
 ## Historia de usuario No.2.1
 * Debe permitir el registro y mantenimiento de información sobre proveedores, incluyendo nombre, dirección, información de contacto y productos que suministran.
@@ -177,7 +175,128 @@ Como administrador, quiero registrar y mantener la información de los proveedor
 - Dado que el administrador selecciona eliminar un proveedor, entonces el sistema debe permitir eliminarlo previa confirmación.
 - Dado que el administrador utiliza la barra de búsqueda, entonces debe poder filtrar proveedores por nombre.
 
+# Facturación y Cobro
+
+## Historia de usuario No. 3.1
+* Debe generar recibos para las ventas.
+
+### Titulo:
+Generación de recibos de venta
+
+### Descripción:
+Como empleado, quiero generar un recibo al finalizar una venta, seleccionando el método de pago e incluyendo los datos del cliente y los productos comprados, para entregar un comprobante claro y completo al cliente.
+
+### Criterios de aceptación:
+
+- Dado que el empleado ha agregado productos al carrito, entonces debe poder visualizar el resumen de la venta antes de procesar el pago.
+- Dado que el empleado ingresa el nombre y teléfono del cliente, entonces el sistema debe asociar esos datos a la venta.
+- Dado que el empleado presiona el botón de “Procesar pago”, entonces el sistema debe mostrar las opciones de método de pago:
+    - Efectivo
+    - Tarjeta
+    - Transferencia
+- Dado que el empleado selecciona un método de pago válido, entonces el sistema debe procesar la venta correctamente.
+- Dado que la venta es procesada exitosamente, entonces el sistema debe generar automáticamente un recibo que incluya:
+    - Nombre del negocio
+    - Número de recibo
+    - Fecha y hora
+    - Método de pago
+    - Lista de productos (nombre, cantidad, precio)
+    - Subtotal
+    - IVA
+    - Total
+- Dado que el recibo es generado, entonces el sistema debe mostrarlo en pantalla.
+- Dado que el recibo está visible, entonces el empleado debe poder:
+    - Descargar el recibo
+    - Imprimir el recibo
+    - Cerrar la vista
+
+# Descuentos y Promociones
+
+* Debe permitir la aplicación de descuentos y promociones en productos específicos o en compras totales.
+
+## Historia de usuario No.4.1
+
+### Titulo:
+Aplicar descuentos a una compra
+
+### Descripción:
+Como vendedor, quiero poder agregar ciertos descuentos ya establecidos en un venta.
+
+### Criterios de aceptación:
+
+- Dado que el carrito de venta esta listo, entonces debe aparecer los siguiente descuentos:
+    - 5%
+    - 10%
+    - 15% 
+    - 20%
+- Dado que el vendedor selecciona un descuento, entonces el sistema debe de mostrar un mensaje de confirmación y aplicarlo.
+- Dado que el vendedor selecciona otro descuento, el sistema debe de quitar el descuento previo y aplicar el nuevo.
+- Dado que el vendedor deselecciona un descuento, entonces el sistema debe de mostrar un mensaje de confirmación y retirarlo.
 
 
+# Búsqueda y Consulta de Productos
+
+* Debe permitir la búsqueda rápida de productos por nombre, número de artículo o categoría.
+
+## Historia de usuario No.5.1
+
+### Titulo: 
+Busqueda rapida de productos.
+
+### Descripción:
+Como vendedor, quiero buscar de forma rapida y eficiente los productos ya sea por nombre, ID de articulo o Palabra clave.
+
+### Criterios de aceptación:
+
+- Dado que el vendedor accede al catalogo de productos, entonces debe visualizar las categorias disponibles.
+- Dado que el vendedor esta en catalogo de productos, entonces debe de existir una barra de busqueda.
+- Dado que el vendedor usa la barra de busqueda, entonces debe poder buscar por:
+    - Nombre de articulo.
+    - Id de articulo.
+    - Palabra clave.
+- Dado que el vendedor selecciona la opcion de Todas las Categorias, cuando use la barra de busqueda, entonces debe de buscar en todas la categorias.
+- Dado que el vendedor selecciona una categoria en especifico, cuando use la barra de busqueda, entonces debe solo poder buscar en esa catergoria.
+- Dado que no existen productos que coincidan con la búsqueda, entonces el sistema debe mostrar un mensaje indicando que no se encontraron resultados.
+
+# Generación de Reportes
+
+Historia de usuario No. 6.1
+Debe generar informes de ventas diarios, semanales, mensuales y anuales.
+### Título:
+Generar reportes de ventas.
+
+### Descripción:
+Como administrador, quiero generar informes de ventas mensuales, para analizar el desempeño del negocio en diferentes periodos.
+
+### Criterios de aceptación:
+- Dado que se solicita un reporte, entonces se debe poder seleccionar el periodo (diario, semanal, mensual, anual).
+- Dado que se genera el reporte, entonces debe mostrar el total de ventas del periodo seleccionado.
+- Dado que se genera el reporte, entonces debe incluir el detalle de las transacciones realizadas.
+- Dado que se visualiza el reporte, entonces debe existir una opción para exportarlo.
 
 
+# Registro de Clientes
+Debe permitir la creación y mantenimiento de registros de clientes, incluyendo información de contacto y registros de compras anteriores.
+## Historia de usuario No. 7.1
+
+### Título:
+Gestión de clientes
+
+### Descripción:
+Como administrador, quiero registrar y mantener la información de los clientes, incluyendo sus datos de contacto y su historial de compras, para tener un mejor control y seguimiento de las ventas realizadas.
+
+### Criterios de aceptación:
+- Dado que el administrador accede al módulo de clientes, entonces debe poder visualizar la lista de clientes registrados.
+- Dado que el administrador selecciona la opción “Nuevo cliente”, entonces debe poder registrar un cliente ingresando:
+    - Nombre Completo
+    - Teléfono
+    - Correo electrónico (opcional)
+- Dado que el administrador registra un cliente con datos válidos, entonces el sistema debe guardarlo y mostrarlo en la lista de clientes.
+- Dado que el administrador selecciona un cliente existente, entonces debe poder visualizar su información completa junto con su historial de compras.
+- Dado que el administrador consulta el historial de compras de un cliente, entonces el sistema debe mostrar:
+    - Productos adquiridos
+        - Cada producto con su precio individual. 
+    - Total de la compra
+- Dado que el administrador edita la información de un cliente, entonces el sistema debe guardar los cambios correctamente.
+- Dado que el administrador selecciona eliminar un cliente, entonces el sistema debe solicitar confirmación antes de eliminarlo.
+- Dado que el administrador utiliza la barra de búsqueda, entonces debe poder buscar clientes por nombre o teléfono.
