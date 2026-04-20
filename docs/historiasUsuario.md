@@ -193,7 +193,6 @@ Como empleado, quiero generar un recibo al finalizar una venta, seleccionando el
 - Dado que el empleado presiona el botón de “Procesar pago”, entonces el sistema debe mostrar las opciones de método de pago:
     - Efectivo
     - Tarjeta
-    - Transferencia
 - Dado que el empleado selecciona un método de pago válido, entonces el sistema debe procesar la venta correctamente.
 - Dado que la venta es procesada exitosamente, entonces el sistema debe generar automáticamente un recibo que incluya:
     - Nombre del negocio
