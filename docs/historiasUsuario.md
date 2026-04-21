@@ -299,3 +299,50 @@ Como administrador, quiero registrar y mantener la información de los clientes,
 - Dado que el administrador edita la información de un cliente, entonces el sistema debe guardar los cambios correctamente.
 - Dado que el administrador selecciona eliminar un cliente, entonces el sistema debe solicitar confirmación antes de eliminarlo.
 - Dado que el administrador utiliza la barra de búsqueda, entonces debe poder buscar clientes por nombre o teléfono.
+
+# Interfaz de Usuario
+
+## Historia de usuario No.8.1
+* Debe contar con una interfaz de usuario amigable y fácil de usar para el personal de la ferretería.
+
+### Titulo:
+Navegación intuitiva del sistema
+
+### Descripción:
+Como empleado de la ferretería, quiero que la interfaz del sistema sea fácil de entender y navegar, para realizar mis tareas diarias sin necesitar conocimientos técnicos avanzados.
+
+### Criterios de aceptación:
+- Dado que el empleado abre el sistema, entonces debe ver un menú principal con acceso claro a cada módulo (inventario, ventas, proveedores, etc.).
+- Dado que el empleado navega entre módulos, entonces debe existir siempre una forma visible de regresar al menú principal.
+- Dado que el empleado realiza una acción (guardar, eliminar, procesar), entonces el sistema debe mostrar un mensaje de confirmación o resultado.
+- Dado que el empleado comete un error al llenar un formulario, entonces el sistema debe indicar claramente el campo incorrecto y el motivo.
+
+## Historia de usuario No.8.2
+* La interfaz se construirá utilizando Java Swing o JavaFX.
+
+### Titulo:
+Acceso al sistema como aplicación de escritorio
+
+### Descripción:
+Como empleado de la ferretería, quiero acceder al sistema a través de una aplicación de escritorio, para trabajar de forma estable y sin depender de un navegador web.
+
+### Criterios de aceptación:
+- Dado que el empleado inicia la aplicación, entonces debe abrirse directamente como ventana de escritorio sin requerir un navegador.
+- Dado que la aplicación está en ejecución, entonces debe funcionar correctamente sin conexión a internet.
+- Dado que el empleado usa el teclado o mouse, entonces los controles del sistema deben responder de forma fluida y consistente.
+
+## Historia de usuario No.8.3
+* Se diseñarán pantallas y formularios para la gestión de productos, ventas, reportes y otras funcionalidades.
+
+### Titulo:
+Pantallas dedicadas por módulo del sistema
+
+### Descripción:
+Como empleado de la ferretería, quiero que cada área del sistema (productos, ventas, reportes, proveedores, clientes) tenga su propia pantalla y formularios, para gestionar cada funcionalidad de forma organizada y sin confusión.
+
+### Criterios de aceptación:
+- Dado que el empleado accede al módulo de inventario, entonces debe ver una pantalla exclusiva para gestión de productos.
+- Dado que el empleado accede al módulo de ventas, entonces debe ver una pantalla exclusiva con el carrito y opciones de pago.
+- Dado que el empleado accede al módulo de reportes, entonces debe ver una pantalla con los distintos tipos de informes disponibles.
+- Dado que el empleado llena un formulario, entonces cada campo debe estar claramente etiquetado y con indicaciones de formato cuando aplique.
+- Dado que el empleado completa un formulario, entonces debe existir un botón de "Guardar" o "Confirmar" visible.
