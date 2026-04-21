@@ -1,4 +1,4 @@
-[![SVG Banners](https://svg-banners.vercel.app/api?type=typeWriter&text1=Sistema%20Gestión%20Ferretería&width=1000&height=400)](https://github.com/Akshay090/svg-banners)
+[![SVG Banners](https://svg-banners.vercel.app/api?type=typeWriter&text1=Sistema%20Gestión%20Ferretería&width=1000&height=100)](https://github.com/Akshay090/svg-banners)
 
 
 # Sistema de Gestión para Ferretería
