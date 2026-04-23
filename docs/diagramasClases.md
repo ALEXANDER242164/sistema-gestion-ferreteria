@@ -1,9 +1,7 @@
-## Prueba Diagrama de clases 
-Hola esta es mi prueba aqui subire la explicacion del diagrama de clases que se vera modificado despues.
-![Roblox prueba](assets/robloxPrueba.png)
+## Diagrama de clases primera version
 
-Prueba antes del desastre 
-![Ronnie](assets/WIN_20251201_07_44_18_Pro.jpg)
+![DiagramaClases](assets/Diagrama%20de%20clase%20Gestion%20ferretería.png)
 
-Lugar para Luis
-* Foto
+## Diagrama de clases segunda version
+
+![DiagramaClases](assets/Diagrama%20de%20clases.png)
