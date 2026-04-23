@@ -1,13 +1,13 @@
-[![SVG Banners](https://svg-banners.vercel.app/api?type=typeWriter&text1=Sistema%20Gestión%20Ferretería&width=1000&height=100)](https://github.com/Akshay090/svg-banners)
-
+![Banner Sistema de Gestión para Ferretería](banner.svg)
 
 # Sistema de Gestión para Ferretería
 
-Este repositorio contiene el código fuente y la documentación para un sistema de escritorio de gestión de ferreterías, desarrollado como un proyecto académico para la Universidad Autónoma de Yucatán.
+Este repositorio contiene el código fuente y la documentación para un sistema web de gestión de ferreterías, desarrollado como un proyecto académico para la Universidad Autónoma de Yucatán.
 
 ## Tabla de Contenidos
 
 - [Descripción del Proyecto](#descripción-del-proyecto)
+- [Prototipos de Interfaz](#prototipos-de-interfaz)
 - [Características](#características)
 - [Arquitectura y Tecnologías](#arquitectura-y-tecnologías)
 - [Estructura del Repositorio](#estructura-del-repositorio)
@@ -16,7 +16,14 @@ Este repositorio contiene el código fuente y la documentación para un sistema 
 
 ## Descripción del Proyecto
 
-El objetivo es crear una aplicación de escritorio robusta en Java que permita a los administradores de una ferretería gestionar eficientemente las operaciones diarias, desde el control de inventario y ventas hasta la gestión de proveedores y la generación de reportes.
+El objetivo es crear una aplicación web robusta que permita a los administradores de una ferretería gestionar eficientemente las operaciones diarias, desde el control de inventario y ventas hasta la gestión de proveedores y la generación de reportes.
+
+## Prototipos de Interfaz
+
+Se han desarrollado dos versiones de prototipos de la interfaz de usuario:
+
+- **[Versión Base](https://claude.ai/design/p/ad00462b-adfc-4cff-99eb-1697f41224ae?file=Sistema+Ferreteria.html)** — Adaptación que se alinea con los requisitos y diagramas actuales del proyecto.
+- **[Versión Mejorada](https://claude.ai/design/p/8f2fd7be-6c51-4486-8899-a5adfb610eef?file=Sistema+Ferreteria.html)** — Versión con mejoras adicionales identificadas durante el diseño que van más allá de los requisitos actuales.
 
 ## Características
 
@@ -31,13 +38,9 @@ El sistema contará con los siguientes módulos principales:
 
 ## Arquitectura y Tecnologías
 
-- **Lenguaje:** Java 17
-- **Gestor de dependencias:** Apache Maven
-- **Interfaz de Usuario (UI):** Java Swing o JavaFX (pendiente de decisión).
+- **Backend:** Java
+- **Frontend:** HTML, CSS y JavaScript
 - **Arquitectura:** El proyecto sigue un patrón de diseño MVC (Modelo-Vista-Controlador) para separar la lógica de negocio, los datos y la presentación.
-  - `model`: Contiene las entidades del dominio (Producto, Venta, Cliente, etc.).
-  - `service`: Se encarga de la lógica de negocio y el acceso a datos.
-  - `controller`: Coordina la interacción entre la vista y los servicios.
 
 ## Estructura del Repositorio
 
@@ -57,27 +60,6 @@ El sistema contará con los siguientes módulos principales:
 │       │               └── Main.java   # Punto de entrada de la aplicación
 │       └── test/       # Pruebas unitarias
 └── README.md           # Este archivo
-```
-
-## Cómo Compilar y Ejecutar
-
-Todos los comandos deben ejecutarse desde el directorio `sistema/`.
-
-```bash
-# Navegar al directorio del proyecto
-cd sistema
-
-# Compilar el código fuente
-mvn clean compile
-
-# Ejecutar la aplicación
-mvn exec:java -Dexec.mainClass="com.proyecto.Main"
-
-# Ejecutar las pruebas
-mvn test
-
-# Empaquetar la aplicación en un archivo JAR
-mvn package
 ```
 
 ## Documentación

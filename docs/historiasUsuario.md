@@ -317,7 +317,7 @@ Como administrador, quiero registrar y mantener la información de los clientes,
 
 ### Navegación intuitiva del sistema
 
-#### Requisito funcional
+#### Requisito No funcional
 Debe contar con una interfaz de usuario amigable y fácil de usar para el personal de la ferretería.
 
 #### Descripción
@@ -331,24 +331,23 @@ Como empleado de la ferretería, quiero que la interfaz del sistema sea fácil d
 
 ## Historia de usuario No.8.2
 
-### Acceso al sistema como aplicación de escritorio
+### Acceso al sistema como aplicación web
 
-#### Requisito funcional
-La interfaz se construirá utilizando Java Swing o JavaFX. (pendientes)
+#### Requisito NO funcional
+La interfaz se construirá utilizando HTML, CSS y JavaScript
 
 #### Descripción
-Como empleado de la ferretería, quiero acceder al sistema a través de una aplicación de escritorio, para trabajar de forma estable y sin depender de un navegador web.
+Como empleado de la ferretería, quiero acceder al sistema a través de una página web.
 
 #### Criterios de aceptación
-- Dado que el empleado inicia la aplicación, entonces debe abrirse directamente como ventana de escritorio sin requerir un navegador.
-- Dado que la aplicación está en ejecución, entonces debe funcionar correctamente sin conexión a internet.
+- Dado que el empleado accede al link, entonces debe abrirse directamente en el navegador.
 - Dado que el empleado usa el teclado o mouse, entonces los controles del sistema deben responder de forma fluida y consistente.
 
 ## Historia de usuario No.8.3
 
 ### Pantallas dedicadas por módulo del sistema
 
-#### Requisito funcional
+#### Requisito No funcional
 Se diseñarán pantallas y formularios para la gestión de productos, ventas, reportes y otras funcionalidades.
 
 #### Descripción
