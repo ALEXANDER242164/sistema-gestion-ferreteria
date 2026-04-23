@@ -2,14 +2,16 @@
 # Gestión de Inventarios
 
 ## Historia de usuario No.1
-El sistema debe permitir la creación y mantenimiento de un catálogo de productos con detalles como nombre, descripción, número de artículo, categoría, precio y cantidad en stock.
-#### Titulo:
-Crear y modificar catalogo de productos.
 
-### Descripción: 
+### Crear y modificar catálogo de productos
+
+#### Requisito funcional
+El sistema debe permitir la creación y mantenimiento de un catálogo de productos con detalles como nombre, descripción, número de artículo, categoría, precio y cantidad en stock.
+
+#### Descripción
 Como admin, quiero crear, visualizar y modificar los productos que se encuentran en el catalogo para mantenerlo actualizado.
 
-### Criterios de aceptación:
+#### Criterios de aceptación
 - Dado que se encuentrar en el catalogo, entonces debe verse los productos en forma de lista.
 - Dado que se esta en el catalogo, entonces debe de verse las categorias de los productos en un barra superior.
 - Dado que se visualiza algun producto, entonces debe de existir una opcion que diga "Modificar"
@@ -23,14 +25,16 @@ Como admin, quiero crear, visualizar y modificar los productos que se encuentran
     - Cantidad en stock
 
 ## Historia de usuario No.2
-Debe permitir la actualización de los niveles de inventario cuando se realicen compras o ventas.
-### Titulo: 
-Visualizar el estado de inventario.
 
-### Descripción;
+### Visualizar el estado de inventario
+
+#### Requisito funcional
+Debe permitir la actualización de los niveles de inventario cuando se realicen compras o ventas.
+
+#### Descripción
 Como usuario, quiero visualizar la cantidad disponible y el stock mínimo de cada producto, para conocer el estado actual del inventario
 
-### Criterios de aceptación:
+#### Criterios de aceptación
 - Dado que el usuario accede al catálogo de productos, entonces debe visualizar por cada producto:
     - La cantidad disponible (ej: 5 unidades)
     - El stock mínimo definido
@@ -39,15 +43,15 @@ Como usuario, quiero visualizar la cantidad disponible y el stock mínimo de cad
 
 ## Historia de usuario No.3
 
+### Visualizar alertas de productos con stock bajo
+
+#### Requisito funcional
 Debe generar alertas cuando los niveles de inventario sean bajos.
 
-### Titulo:
-Visualizar alertas de productos con stock bajo
-
-### Descripción:
+#### Descripción
 Como usuario, quiero identificar rápidamente los productos con stock bajo, para tomar acciones de reposición oportunamente.
 
-### Criterios de aceptación:
+#### Criterios de aceptación
 
 - Dado que existen productos con stock menor al mínimo, entonces el sistema debe:
     - Mostrar una etiqueta de “Stock Bajo” en cada producto afectado
@@ -58,17 +62,17 @@ Como usuario, quiero identificar rápidamente los productos con stock bajo, para
 
 # Registro de Ventas y Compras
 
-### Historia de usuario No1.1
+## Historia de usuario No.1.1
 
+### Registrar las ventas de los productos en el carrito
+
+#### Requisito funcional
 Debe permitir a los empleados registrar ventas de productos a clientes.
 
-### Titulo: 
-Registrar las ventas de los productos en el carrito.
-
-### Descripción:
+#### Descripción
 Como vendedor, quiero añadir productos al carrito de venta para registrar la compra del cliente de manera rrapida y controlada.
 
-### Criterios de aceptación:
+#### Criterios de aceptación
 
 
 - Dado que el vendedor esta en el modulo de venta,cuando selecciona un producto, entonces el sistema debe agregarlo al carrito.
@@ -79,17 +83,17 @@ Como vendedor, quiero añadir productos al carrito de venta para registrar la co
 - Dado que el vendedor está en el carrito, entonces debe poder eliminar un producto completamente (icono de basurita).
 
 
-### Historia de usuario No1.2
+## Historia de usuario No.1.2
 
-* Debe permitir la creación de órdenes de compra a proveedores para reponer inventario.
+### Crear órdenes de compra a proveedores
 
-### Titulo:
-Crear órdenes de compra a proveedores
+#### Requisito funcional
+Debe permitir la creación de órdenes de compra a proveedores para reponer inventario.
 
-### Descripción:
+#### Descripción
 Como administrador, quiero crear órdenes de compra a proveedores para reabastecer productos cuando el stock sea bajo.
 
-### Criterios de aceptación:
+#### Criterios de aceptación
 - Dado que el administrador accede al módulo de reportes, entonces debe poder crear una nueva orden de compra.
 -  Dado que el usuario está creando una orden, entonces debe poder seleccionar un proveedor.
 - Dado que el usuario está creando una orden, entonces debe poder seleccionar un proveedor.
@@ -100,17 +104,17 @@ Como administrador, quiero crear órdenes de compra a proveedores para reabastec
 - Dado que el usuario intenta crear una orden sin productos, entonces el sistema debe impedirlo y mostrar un mensaje.
 
 
-### Historia de usuario No1.3
+## Historia de usuario No.1.3
 
+### Visualizar transacciones
+
+#### Requisito funcional
 Debe mantener un historial de todas las transacciones de ventas y compras.
 
-### Titulo:
-Visualizar transacciones.
-
-### Descripción:
+#### Descripción
 Como administrador, quiero visualizar todas las transacciones eso incluye órdenes de compra, historial de ventas y todas las transacciones.
 
-### Criterios de aceptación:
+#### Criterios de aceptación
 - Dado que el administrador esta en el modulo de reportes, entonces debe de existir los siguientes elementos:
     - Órdenes de Compra.
     - Historial de Ventas.
@@ -153,14 +157,16 @@ Como administrador, quiero visualizar todas las transacciones eso incluye órden
 # Gestión de Proveedores
 
 ## Historia de usuario No.2.1
-* Debe permitir el registro y mantenimiento de información sobre proveedores, incluyendo nombre, dirección, información de contacto y productos que suministran.
-### Titulo:
-Gestión de proveedores
 
-### Descripción:
+### Gestión de proveedores
+
+#### Requisito funcional
+Debe permitir el registro y mantenimiento de información sobre proveedores, incluyendo nombre, dirección, información de contacto y productos que suministran.
+
+#### Descripción
 Como administrador, quiero registrar y mantener la información de los proveedores, incluyendo nombre, dirección, datos de contacto y productos que suministran, para tener un control organizado y actualizado de los proveedores del sistema.
 
-### Criterios de aceptación:
+#### Criterios de aceptación
 - Dado que el administrador accede al módulo de proveedores, entonces debe poder visualizar la lista de proveedores registrados.
 - Dado que el administrador selecciona la opción “Nuevo proveedor”, entonces debe poder registrar un proveedor ingresando:
     - Nombre del proveedor
@@ -177,16 +183,17 @@ Como administrador, quiero registrar y mantener la información de los proveedor
 
 # Facturación y Cobro
 
-## Historia de usuario No. 3.1
-* Debe generar recibos para las ventas.
+## Historia de usuario No.3.1
 
-### Titulo:
-Generación de recibos de venta
+### Generación de recibos de venta
 
-### Descripción:
+#### Requisito funcional
+Debe generar recibos para las ventas.
+
+#### Descripción
 Como empleado, quiero generar un recibo al finalizar una venta, seleccionando el método de pago e incluyendo los datos del cliente y los productos comprados, para entregar un comprobante claro y completo al cliente.
 
-### Criterios de aceptación:
+#### Criterios de aceptación
 
 - Dado que el empleado ha agregado productos al carrito, entonces debe poder visualizar el resumen de la venta antes de procesar el pago.
 - Dado que el empleado ingresa el nombre y teléfono del cliente, entonces el sistema debe asociar esos datos a la venta.
@@ -211,17 +218,17 @@ Como empleado, quiero generar un recibo al finalizar una venta, seleccionando el
 
 # Descuentos y Promociones
 
-* Debe permitir la aplicación de descuentos y promociones en productos específicos o en compras totales.
-
 ## Historia de usuario No.4.1
 
-### Titulo:
-Aplicar descuentos a una compra
+### Aplicar descuentos a una compra
 
-### Descripción:
+#### Requisito funcional
+Debe permitir la aplicación de descuentos y promociones en productos específicos o en compras totales.
+
+#### Descripción
 Como vendedor, quiero poder agregar ciertos descuentos ya establecidos en un venta.
 
-### Criterios de aceptación:
+#### Criterios de aceptación
 
 - Dado que el carrito de venta esta listo, entonces debe aparecer los siguiente descuentos:
     - 5%
@@ -235,17 +242,17 @@ Como vendedor, quiero poder agregar ciertos descuentos ya establecidos en un ven
 
 # Búsqueda y Consulta de Productos
 
-* Debe permitir la búsqueda rápida de productos por nombre, número de artículo o categoría.
-
 ## Historia de usuario No.5.1
 
-### Titulo: 
-Busqueda rapida de productos.
+### Búsqueda rápida de productos
 
-### Descripción:
+#### Requisito funcional
+Debe permitir la búsqueda rápida de productos por nombre, número de artículo o categoría.
+
+#### Descripción
 Como vendedor, quiero buscar de forma rapida y eficiente los productos ya sea por nombre, ID de articulo o Palabra clave.
 
-### Criterios de aceptación:
+#### Criterios de aceptación
 
 - Dado que el vendedor accede al catalogo de productos, entonces debe visualizar las categorias disponibles.
 - Dado que el vendedor esta en catalogo de productos, entonces debe de existir una barra de busqueda.
@@ -259,15 +266,17 @@ Como vendedor, quiero buscar de forma rapida y eficiente los productos ya sea po
 
 # Generación de Reportes
 
-Historia de usuario No. 6.1
-Debe generar informes de ventas diarios, semanales, mensuales y anuales.
-### Título:
-Generar reportes de ventas.
+## Historia de usuario No.6.1
 
-### Descripción:
+### Generar reportes de ventas
+
+#### Requisito funcional
+Debe generar informes de ventas diarios, semanales, mensuales y anuales.
+
+#### Descripción
 Como administrador, quiero generar informes de ventas mensuales, para analizar el desempeño del negocio en diferentes periodos.
 
-### Criterios de aceptación:
+#### Criterios de aceptación
 - Dado que se solicita un reporte, entonces se debe poder seleccionar el periodo (diario, semanal, mensual, anual).
 - Dado que se genera el reporte, entonces debe mostrar el total de ventas del periodo seleccionado.
 - Dado que se genera el reporte, entonces debe incluir el detalle de las transacciones realizadas.
@@ -275,16 +284,18 @@ Como administrador, quiero generar informes de ventas mensuales, para analizar e
 
 
 # Registro de Clientes
+
+## Historia de usuario No.7.1
+
+### Gestión de clientes
+
+#### Requisito funcional
 Debe permitir la creación y mantenimiento de registros de clientes, incluyendo información de contacto y registros de compras anteriores.
-## Historia de usuario No. 7.1
 
-### Título:
-Gestión de clientes
-
-### Descripción:
+#### Descripción
 Como administrador, quiero registrar y mantener la información de los clientes, incluyendo sus datos de contacto y su historial de compras, para tener un mejor control y seguimiento de las ventas realizadas.
 
-### Criterios de aceptación:
+#### Criterios de aceptación
 - Dado que el administrador accede al módulo de clientes, entonces debe poder visualizar la lista de clientes registrados.
 - Dado que el administrador selecciona la opción “Nuevo cliente”, entonces debe poder registrar un cliente ingresando:
     - Nombre Completo
@@ -299,3 +310,53 @@ Como administrador, quiero registrar y mantener la información de los clientes,
 - Dado que el administrador edita la información de un cliente, entonces el sistema debe guardar los cambios correctamente.
 - Dado que el administrador selecciona eliminar un cliente, entonces el sistema debe solicitar confirmación antes de eliminarlo.
 - Dado que el administrador utiliza la barra de búsqueda, entonces debe poder buscar clientes por nombre o teléfono.
+
+# Requisitos no funcionales - Interfaz de Usuario
+
+## Historia de usuario No.8.1
+
+### Navegación intuitiva del sistema
+
+#### Requisito funcional
+Debe contar con una interfaz de usuario amigable y fácil de usar para el personal de la ferretería.
+
+#### Descripción
+Como empleado de la ferretería, quiero que la interfaz del sistema sea fácil de entender y navegar, para realizar mis tareas diarias sin necesitar conocimientos técnicos avanzados.
+
+#### Criterios de aceptación
+- Dado que el empleado abre el sistema, entonces debe ver un menú principal con acceso claro a cada módulo (inventario, ventas, proveedores, etc.).
+- Dado que el empleado navega entre módulos, entonces debe existir siempre una forma visible de regresar al menú principal.
+- Dado que el empleado realiza una acción (guardar, eliminar, procesar), entonces el sistema debe mostrar un mensaje de confirmación o resultado.
+- Dado que el empleado comete un error al llenar un formulario, entonces el sistema debe indicar claramente el campo incorrecto y el motivo.
+
+## Historia de usuario No.8.2
+
+### Acceso al sistema como aplicación de escritorio
+
+#### Requisito funcional
+La interfaz se construirá utilizando Java Swing o JavaFX. (pendientes)
+
+#### Descripción
+Como empleado de la ferretería, quiero acceder al sistema a través de una aplicación de escritorio, para trabajar de forma estable y sin depender de un navegador web.
+
+#### Criterios de aceptación
+- Dado que el empleado inicia la aplicación, entonces debe abrirse directamente como ventana de escritorio sin requerir un navegador.
+- Dado que la aplicación está en ejecución, entonces debe funcionar correctamente sin conexión a internet.
+- Dado que el empleado usa el teclado o mouse, entonces los controles del sistema deben responder de forma fluida y consistente.
+
+## Historia de usuario No.8.3
+
+### Pantallas dedicadas por módulo del sistema
+
+#### Requisito funcional
+Se diseñarán pantallas y formularios para la gestión de productos, ventas, reportes y otras funcionalidades.
+
+#### Descripción
+Como empleado de la ferretería, quiero que cada área del sistema (productos, ventas, reportes, proveedores, clientes) tenga su propia pantalla y formularios, para gestionar cada funcionalidad de forma organizada y sin confusión.
+
+#### Criterios de aceptación
+- Dado que el empleado accede al módulo de inventario, entonces debe ver una pantalla exclusiva para gestión de productos.
+- Dado que el empleado accede al módulo de ventas, entonces debe ver una pantalla exclusiva con el carrito y opciones de pago.
+- Dado que el empleado accede al módulo de reportes, entonces debe ver una pantalla con los distintos tipos de informes disponibles.
+- Dado que el empleado llena un formulario, entonces cada campo debe estar claramente etiquetado y con indicaciones de formato cuando aplique.
+- Dado que el empleado completa un formulario, entonces debe existir un botón de "Guardar" o "Confirmar" visible.
