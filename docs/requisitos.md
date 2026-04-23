@@ -29,13 +29,13 @@
 ### Búsqueda y Consulta de Productos
 
 * Debe permitir la búsqueda rápida de productos por nombre, número de artículo o categoría.
-* Debe proporcionar información detallada de cada producto, incluyendo precio, existencias y detalles técnicos.
+* Debe proporcionar información detallada de cada producto, incluyendo precio, existencias y detalles técnicos.(pediente a la ultima, version)
 
 ### Generación de Reportes
 
 * Debe generar informes de ventas diarios, semanales, mensuales y anuales.
-* Debe proporcionar informes de inventario actualizados.
-* Debe ofrecer informes de ventas por categoría de productos y proveedores.
+* Debe proporcionar informes de inventario actualizados. (pendiente y en revision si es necesario)
+* Debe ofrecer informes de ventas por categoría de productos y proveedores. (pendiente y en revision si es necesiro)
 
 ### Registro de Clientes
 
