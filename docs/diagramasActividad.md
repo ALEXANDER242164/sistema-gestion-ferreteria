@@ -1,3 +1,3 @@
-##Diagrama de actividades
+## Diagrama de actividades
 
 ![DiagramaActividades](assets/Diagrama%20Actividades.png)
