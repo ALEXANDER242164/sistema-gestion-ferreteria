@@ -22,8 +22,8 @@ El objetivo es crear una aplicación web robusta que permita a los administrador
 
 Se han desarrollado dos versiones de prototipos de la interfaz de usuario:
 
-- **[Versión Base](https://claude.ai/design/p/ad00462b-adfc-4cff-99eb-1697f41224ae?file=Sistema+Ferreteria.html)** — Adaptación que se alinea con los requisitos y diagramas actuales del proyecto.
-- **[Versión Mejorada](https://claude.ai/design/p/8f2fd7be-6c51-4486-8899-a5adfb610eef?file=Sistema+Ferreteria.html)** — Versión con mejoras adicionales identificadas durante el diseño que van más allá de los requisitos actuales.
+- **[Versión Base](https://claude.ai/design/p/ad00462b-adfc-4cff-99eb-1697f41224ae?file=Sistema+Ferreteria.html&via=share)** — Adaptación que se alinea con los requisitos y diagramas actuales del proyecto.
+- **[Versión Mejorada](https://claude.ai/design/p/8f2fd7be-6c51-4486-8899-a5adfb610eef?file=Sistema+Ferreteria.html&via=share)** — Versión con mejoras adicionales identificadas durante el diseño que van más allá de los requisitos actuales.
 
 ## Características
 
