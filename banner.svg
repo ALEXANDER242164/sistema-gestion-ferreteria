@@ -1,0 +1,65 @@
+<svg width="1000" height="120" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 120">
+  <defs>
+    <style>
+      @keyframes typewriter {
+        from { width: 0; }
+        to { width: 100%; }
+      }
+
+      @keyframes blink {
+        0%, 49% { opacity: 1; }
+        50%, 100% { opacity: 0; }
+      }
+
+      @keyframes fadeInSubtitle {
+        from { opacity: 0; }
+        to { opacity: 1; }
+      }
+
+      .banner-bg {
+        fill: #f8f9fa;
+        stroke: #2c3e50;
+        stroke-width: 2;
+      }
+
+      .banner-text {
+        font-size: 42px;
+        font-weight: 700;
+        fill: #2c3e50;
+        font-family: 'Segoe UI', Arial, sans-serif;
+        overflow: hidden;
+        white-space: nowrap;
+        animation: typewriter 4.5s steps(45, end) forwards;
+      }
+
+      .banner-cursor {
+        animation: blink 1s infinite;
+      }
+
+      .banner-subtitle {
+        font-size: 16px;
+        fill: #555;
+        font-family: 'Segoe UI', Arial, sans-serif;
+        animation: fadeInSubtitle 0.8s ease-in 4.5s forwards;
+        opacity: 0;
+      }
+
+      .icon {
+        font-size: 40px;
+      }
+    </style>
+  </defs>
+
+  <!-- Fondo redondeado -->
+  <rect class="banner-bg" x="10" y="10" width="980" height="100" rx="8"/>
+
+  <!-- Efecto typewriter principal -->
+  <text x="60" y="65" class="banner-text">
+    🏗️ Sistema de Gestión para Ferretería<tspan class="banner-cursor">|</tspan>
+  </text>
+
+  <!-- Subtítulo que aparece después -->
+  <text x="60" y="95" class="banner-subtitle">
+    Universidad Autónoma de Yucatán • 4º Semestre • Ingeniería en Software
+  </text>
+</svg>
