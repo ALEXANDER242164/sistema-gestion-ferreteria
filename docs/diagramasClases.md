@@ -5,3 +5,7 @@
 ## Diagrama de clases segunda version
 
 ![DiagramaClases](assets/Diagrama%20de%20clases.png)
+
+## Diagrama de clases tercera version 
+
+![DiagramaClases](assets/diagramaClase.png)
