@@ -1,0 +1,19 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body { 
+  font-family: "DM Sans", sans-serif; 
+  background: #f4f5f7; 
+  color: #374151; 
+  -webkit-font-smoothing: antialiased; 
+}
+
+button, input, select, textarea { font-family: inherit; }
+
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #e5e7eb; border-radius: 3px; }
+
+@media print { 
+  aside { display: none !important; } 
+  main { margin-left: 0 !important; } 
+}
