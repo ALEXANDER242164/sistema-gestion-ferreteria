@@ -7,20 +7,20 @@ public class Product {
     private String category;
     private double price;
     private int stock;
-    private int minStrock;
+    private int minStock;
 
     public Product() {
 
     }
 
-    public Product(int id, String name, String description, String category, double price, int stock, int minStrock) {
+    public Product(int id, String name, String description, String category, double price, int stock, int minStock) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.category = category;
         this.price = price;
         this.stock = stock;
-        this.minStrock = minStrock;
+        this.minStock = minStock;
     }
 
     public int getId() {
@@ -71,12 +71,12 @@ public class Product {
         this.stock = stock;
     }
 
-    public int getMinStrock() {
-        return minStrock;
+    public int getMinStock() {
+        return minStock;
     }
 
-    public void setMinStrock(int minStrock) {
-        this.minStrock = minStrock;
+    public void setMinStock(int minStock) {
+        this.minStock = minStock;
     }
 
 }
