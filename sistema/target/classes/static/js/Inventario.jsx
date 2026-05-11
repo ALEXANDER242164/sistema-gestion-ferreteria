@@ -42,14 +42,53 @@ function Inventario({ productos, setProductos, role }) {
   function abrirEdit(p) { setForm({ ...p }); setEditando(p.id); setModal("form"); }
 
   function guardar() {
-    if (!form.nombre || !form.precio || !form.stock) return;
-    const prod = { ...form, precio: parseFloat(form.precio), stock: parseInt(form.stock), stockMin: parseInt(form.stockMin) || 10 };
-    if (editando) setProductos(ps => ps.map(p => p.id === editando ? prod : p));
-    else setProductos(ps => [...ps, prod]);
+    if(!form.nombre || !form.precio || !form.stock) return;
+      const prod  = {...form, precio: parseFloat(form.precio), stock: parseInt(form.stock), stockMin: parseInt(form.stockMin) || 10};
+
+    const backendProd = {
+      name: prod.nombre,
+      description: prod.descripcion,
+      category: prod.categoria,
+      price: prod.precio,
+      stock: prod.stock,
+      minStock: prod.stockMin
+
+    };
+    if (editando){
+      fetch(`http://localhost:8080/api/products/${parseInt(editando)}`,{
+        method: 'PUT',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(backendProd)
+      })
+      .then(res => res.json())
+      .then(data => {
+        const actualizado = {id: String(data.id), nombre: data.name, descripcion: data.description, categoria: data.category, precio: data.price, stock: data.stock, stockMin: data.minStock};
+        setProductos(ps => ps.map(p => p.id === editando ? actualizado : p));
+      });
+    }else{
+      fetch('http://localhost:8080/api/products',{
+        method: 'POST',
+        headers:{'Content-Type': 'application/json'},
+        body: JSON.stringify(backendProd)
+      })
+      .then(res => res.json())
+      .then(data => {
+        const nuevo = {id: String(data.id), nombre: data.name, descripcion: data.description, categoria: data.category, precio: data.price, stock: data.stock, stockMin: data.minStock};
+        setProductos(ps => [nuevo, ...ps]);
+      })
+    }
     setModal(null);
   }
 
-  function eliminar(id) { setProductos(ps => ps.filter(p => p.id !== id)); setModal(null); }
+    function eliminar(id) {
+    fetch(`http://localhost:8080/api/products/${parseInt(id)}`, {
+      method: 'DELETE'
+    })
+    .then(() => {
+      setProductos(ps => ps.filter(p => p.id !== id));
+      setModal(null);
+    });
+  }
 
   return (
     <div style={invStyles.wrap}>

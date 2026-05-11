@@ -31,6 +31,23 @@ function App() {
         stockMin: p.minStock,
       }))));
     }, [user]);
+    
+  useEffect(() => {
+    if (!user) return;
+    fetch('http://localhost:8080/api/suppliers')
+      .then(res => res.json())
+      .then(data => setProveedores(data.map(s => ({
+        id: String(s.id),
+        nombre: s.nombre,
+        contacto: s.contacto,
+        direccion: s.direccion,
+        telefono: s.telefono,
+        email: s.email,
+        productos: s.productos || [],
+      }))));
+  }, [user]);
+
+
 
   useEffect(() => {
     localStorage.setItem(STORAGE_KEY, JSON.stringify({ nav, productos, proveedores, clientes, ventas, ordenes }));

@@ -16,6 +16,39 @@ function App() {
   const [ventas, setVentas] = useState(saved.ventas || VENTAS_INIT);
   const [ordenes, setOrdenes] = useState(saved.ordenes || ORDENES_INIT);
 
+
+  useEffect(() => {
+    if(!user) return;
+    fetch('http://localhost:8080/api/products')
+      .then(res  => res.json())
+      .then(data => setProductos(data.map(p => ({
+        id: String(p.id),
+        nombre: p.name,
+        descripcion: p.description,
+        categoria: p.category,
+        precio: p.price,
+        stock: p.stock,
+        stockMin: p.minStock,
+      }))));
+    }, [user]);
+    
+  useEffect(() => {
+    if (!user) return;
+    fetch('http://localhost:8080/api/suppliers')
+      .then(res => res.json())
+      .then(data => setProveedores(data.map(s => ({
+        id: String(s.id),
+        nombre: s.nombre,
+        contacto: s.contacto,
+        direccion: s.direccion,
+        telefono: s.telefono,
+        email: s.email,
+        productos: s.productos || [],
+      }))));
+  }, [user]);
+
+
+
   useEffect(() => {
     localStorage.setItem(STORAGE_KEY, JSON.stringify({ nav, productos, proveedores, clientes, ventas, ordenes }));
   }, [nav, productos, proveedores, clientes, ventas, ordenes]);

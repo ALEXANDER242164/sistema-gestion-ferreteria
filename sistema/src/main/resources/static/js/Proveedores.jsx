@@ -24,14 +24,53 @@ function Proveedores({ proveedores, setProveedores, role }) {
 
   function guardar() {
     if (!form.nombre || !form.telefono) return;
-    if (editando) setProveedores(ps => ps.map(p => p.id === editando ? form : p));
-    else setProveedores(ps => [...ps, { ...form }]);
+    const backendProv = {
+      nombre: form.nombre,
+      contacto: form.contacto,
+      direccion: form.direccion,
+      telefono: form.telefono,
+      email: form.email,
+      productos: form.productos || []
+    };
+    if (editando) {
+      fetch(`http://localhost:8080/api/suppliers/${parseInt(editando)}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(backendProv)
+      })
+      .then(res => res.json())
+      .then(data => {
+        const actualizado = { id: String(data.id), nombre: data.nombre, contacto: data.contacto, direccion: data.direccion, telefono: data.telefono, email: data.email, productos: data.productos || [] };
+        setProveedores(ps => ps.map(p => p.id === editando ? actualizado : p));
+      });
+    } else {
+      fetch('http://localhost:8080/api/suppliers', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(backendProv)
+      })
+      .then(res => res.json())
+      .then(data => {
+        const nuevo = { id: String(data.id), nombre: data.nombre, contacto: data.contacto, direccion: data.direccion, telefono: data.telefono, email: data.email, productos: data.productos || [] };
+        setProveedores(ps => [...ps, nuevo]);
+      });
+    }
     setModal(null);
   }
 
+
   function eliminar(id) {
-    if (confirm("¿Eliminar este proveedor?")) { setProveedores(ps => ps.filter(p => p.id !== id)); setModal(null); }
+    if (confirm("¿Eliminar este proveedor?")) {
+      fetch(`http://localhost:8080/api/suppliers/${parseInt(id)}`, {
+        method: 'DELETE'
+      })
+      .then(() => {
+        setProveedores(ps => ps.filter(p => p.id !== id));
+        setModal(null);
+      });
+    }
   }
+
 
   function addProd() {
     if (!prodInput.trim()) return;
