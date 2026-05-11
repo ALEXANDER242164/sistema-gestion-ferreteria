@@ -27,7 +27,7 @@ public class ProductController {
     }
 
     @GetMapping("/{id}") // GET /api/products/1 devuelve el producto con id 1
-    public Product getById(@PathVariable int id) {
+    public Product getById(@PathVariable("id") int id) {
         return productService.getById(id);
 
     }
@@ -38,12 +38,12 @@ public class ProductController {
     }
 
     @PutMapping("/{id}")
-    public Product update(@PathVariable int id, @RequestBody Product product) {
+    public Product update(@PathVariable("id") int id, @RequestBody Product product) {
         return productService.update(id, product);
     }
 
     @DeleteMapping("/{id}")
-    public boolean delete(@PathVariable int id) {
+    public boolean delete(@PathVariable("id") int id) {
         return productService.delete(id);
     }
 }

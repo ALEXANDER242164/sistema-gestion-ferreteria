@@ -1,38 +1,27 @@
 package com.proyecto.service;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicInteger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.proyecto.model.Product; //Se llama paquete model -> clase Product.
+import com.proyecto.model.Product;
+import com.proyecto.repository.ProductRepository;
 
-@Service // Segun por lo que entiendo es el que le dice a spring que esta clase es de
-         // serivicio.
+@Service
 public class ProductService {
-    // Se usara lista en memoria entonces cada que se reinicie el programa se
-    // pierden los datos.
-    private List<Product> products = new ArrayList<>();
-    private AtomicInteger nextId = new AtomicInteger(1); // para incrementar los id de los procutos.
-    // Contructor
 
-    public ProductService() {
-        products.add(
-                new Product(nextId.getAndIncrement(), "Martillo", "Martillo de acero", "Herramientas", 150.00, 20, 5));
-    }
+    @Autowired
+    private ProductRepository repository;
 
     public List<Product> getAll() {
-        return products;
-
+        return repository.findAll();
     }
 
     public Product getById(int id) {
-        return products.stream().filter(p -> p.getId() == id).findFirst().orElse(null);
+        return repository.findById(id).orElse(null);
     }
 
     public Product add(Product product) {
-        product.setId(nextId.getAndIncrement());
-        products.add(product);
-        return product;
+        return repository.save(product);
     }
 
     public Product update(int id, Product updated) {
@@ -44,23 +33,26 @@ public class ProductService {
             existing.setPrice(updated.getPrice());
             existing.setStock(updated.getStock());
             existing.setMinStock(updated.getMinStock());
+            return repository.save(existing);
         }
-        return existing;
+        return null;
     }
 
-    // eliminamos el producto
     public boolean delete(int id) {
-        return products.removeIf(p -> p.getId() == id);
+        if (repository.existsById(id)) {
+            repository.deleteById(id);
+            return true;
+        }
+        return false;
     }
 
     public boolean reduceStock(int productId, int quantity) {
         Product p = getById(productId);
         if (p != null && p.getStock() >= quantity) {
             p.setStock(p.getStock() - quantity);
+            repository.save(p);
             return true;
-
         }
         return false;
-
     }
 }
