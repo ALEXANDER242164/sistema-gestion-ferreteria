@@ -10,9 +10,9 @@ function App() {
 
   const [user, setUser] = useState(savedUser);
   const [nav, setNav] = useState(saved.nav || "inventario");
-  const [productos, setProductos] = useState(saved.productos || PRODUCTOS_INIT);
-  const [proveedores, setProveedores] = useState(saved.proveedores || PROVEEDORES_INIT);
-  const [clientes, setClientes] = useState(saved.clientes || CLIENTES_INIT);
+  const [productos, setProductos] = useState([]);
+  const [proveedores, setProveedores] = useState([]);
+  const [clientes, setClientes] = useState([]);
   const [ventas, setVentas] = useState(saved.ventas || VENTAS_INIT);
   const [ordenes, setOrdenes] = useState(saved.ordenes || ORDENES_INIT);
 
@@ -43,10 +43,21 @@ function App() {
         direccion: s.direccion,
         telefono: s.telefono,
         email: s.email,
-        productos: s.productos || [],
+        productos: s.productosSuministrados || [],
       }))));
   }, [user]);
 
+  useEffect(() => {
+    if(!user) return;
+    fetch('http://localhost:8080/api/customers')
+      .then(res => res.json())
+      .then(data => setClientes(data.map(c => ({
+        id: String(c.id),
+        nombre: c.nombre,
+        telefono: c.telefono,
+        email: c.email,
+      }))))
+  }, [user]);
 
 
   useEffect(() => {

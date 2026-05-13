@@ -24,16 +24,46 @@ function Clientes({ clientes, setClientes, role }) {
 
   function abrirEdit(c) { setForm({ ...c }); setEditando(c.id); setModal("form"); }
 
-  function guardar() {
-    if (!form.nombre || !form.telefono) return;
-    if (editando) setClientes(cs => cs.map(c => c.id === editando ? form : c));
-    else setClientes(cs => [...cs, { ...form }]);
-    setModal(null);
+ function guardar() {
+  if (!form.nombre || !form.telefono) return;
+  const body = { nombre: form.nombre, telefono: form.telefono, email: form.email };
+  if (editando) {
+    fetch(`http://localhost:8080/api/customers/${parseInt(editando)}`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body)
+    })
+    .then(res => res.json())
+    .then(data => {
+      const actualizado = { id: String(data.id), nombre: data.nombre, telefono: data.telefono, email: data.email};
+      setClientes(cs => cs.map(c => c.id === editando ? actualizado : c));
+    });
+  } else {
+    fetch('http://localhost:8080/api/customers', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body)
+    })
+    .then(res => res.json())
+    .then(data => {
+      const nuevo = { id: String(data.id), nombre: data.nombre, telefono: data.telefono, email: data.email};
+      setClientes(cs => [...cs, nuevo]);
+    });
   }
+  setModal(null);
+}
 
-  function eliminar(id) {
-    if (confirm("¿Eliminar este cliente?")) { setClientes(cs => cs.filter(c => c.id !== id)); setModal(null); }
+function eliminar(id) {
+  if (confirm("¿Eliminar este cliente?")) {
+    fetch(`http://localhost:8080/api/customers/${parseInt(id)}`, {
+      method: 'DELETE'
+    })
+    .then(() => {
+      setClientes(cs => cs.filter(c => c.id !== id));
+      setModal(null);
+    });
   }
+}
 
   function verHistorial(c) { setClienteDetalle(c); setModal("historial"); }
 
