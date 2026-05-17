@@ -1,9 +1,11 @@
 package com.proyecto.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.proyecto.model.Product;
+import com.proyecto.model.StockObserver;
 import com.proyecto.repository.ProductRepository;
 
 @Service
@@ -11,9 +13,24 @@ public class ProductService {
 
     @Autowired
     private ProductRepository repository;
+    private List<StockObserver> observers = new ArrayList<>();
 
     public List<Product> getAll() {
         return repository.findAll();
+    }
+
+    public void agregarObserver(StockObserver observer) {
+        observers.add(observer);
+    }
+
+    public void eliminarObserver(StockObserver observer) {
+        observers.remove(observer);
+    }
+
+    private void notificarObservers(Product product) {
+        for (StockObserver observer : observers) {
+            observer.actualizar(product);
+        }
     }
 
     public Product getById(int id) {
@@ -33,6 +50,7 @@ public class ProductService {
             existing.setPrice(updated.getPrice());
             existing.setStock(updated.getStock());
             existing.setMinStock(updated.getMinStock());
+            notificarObservers(existing);
             return repository.save(existing);
         }
         return null;
@@ -51,6 +69,7 @@ public class ProductService {
         if (p != null && p.getStock() >= quantity) {
             p.setStock(p.getStock() - quantity);
             repository.save(p);
+            notificarObservers(p);
             return true;
         }
         return false;

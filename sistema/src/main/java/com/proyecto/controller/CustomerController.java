@@ -1,15 +1,13 @@
 package com.proyecto.controller;
 
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-
 import com.proyecto.model.Customer;
+import com.proyecto.model.Product;
 import com.proyecto.service.CustomerService;
+
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 
 @RestController
 @RequestMapping("/api/customers")
@@ -18,6 +16,11 @@ public class CustomerController {
 
     @Autowired
     private CustomerService customerService;
+
+    @GetMapping
+    public List<Customer> getAll() {
+        return customerService.getAll();
+    }
 
     @GetMapping("/{id}")
     public Customer getById(@PathVariable int id) {

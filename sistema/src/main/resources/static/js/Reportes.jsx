@@ -20,10 +20,25 @@ function Reportes({ ventas, ordenes, setOrdenes, proveedores, productos }) {
   function crearOrden() {
     if (!formOrden.proveedor || formOrden.productos.length === 0) { alert("Selecciona un proveedor y añade al menos un producto."); return; }
     const total = formOrden.productos.reduce((s, p) => s + p.cantidad * p.precio, 0);
-    const nueva = { id: `ORD-${String(ordenes.length + 1).padStart(3, "0")}`, fecha: new Date().toISOString().slice(0, 10), proveedor: formOrden.proveedor, estado: "Pendiente", productos: formOrden.productos, total };
-    setOrdenes(o => [...o, nueva]);
-    setModalOrden(false);
-    setFormOrden({ proveedor: "", productos: [] });
+    const body = {
+      fecha: new Date().toISOString().slice(0, 10),
+      proveedor: formOrden.proveedor,
+      estado: "Pendiente",
+      productos: formOrden.productos,
+      total: total,
+    };
+    fetch('http://localhost:8080/api/orders', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body)
+    })
+    .then(res => res.json())
+    .then(data => {
+      const nueva = { id: String(data.id), fecha: data.fecha, proveedor: data.proveedor, estado: data.estado, productos: data.productos || [], total: data.total };
+      setOrdenes(o => [...o, nueva]);
+      setModalOrden(false);
+      setFormOrden({ proveedor: "", productos: [] });
+    });
   }
 
   function addOrdenProd() {
@@ -206,8 +221,8 @@ function Reportes({ ventas, ordenes, setOrdenes, proveedores, productos }) {
             ))}</tbody>
           </table>
           <div style={{ display: "flex", flexDirection: "column", gap: 4, fontSize: 13, borderTop: "1.5px solid #f0f0f0", paddingTop: 12 }}>
-            <div style={{ display: "flex", justifyContent: "space-between" }}><span>Subtotal</span><span>${detalleVenta.subtotal.toFixed(2)}</span></div>
-            {detalleVenta.descuento > 0 && <div style={{ display: "flex", justifyContent: "space-between", color: "#ea580c" }}><span>Descuento ({detalleVenta.descuento}%)</span><span>−${(detalleVenta.subtotal * detalleVenta.descuento / 100).toFixed(2)}</span></div>}
+            <div style={{ display: "flex", justifyContent: "space-between" }}><span>Subtotal</span><span>${detalleVenta.subTotal.toFixed(2)}</span></div>
+            {detalleVenta.descuento > 0 && <div style={{ display: "flex", justifyContent: "space-between", color: "#ea580c" }}><span>Descuento ({detalleVenta.descuento}%)</span><span>−${(detalleVenta.subTotal * detalleVenta.descuento / 100).toFixed(2)}</span></div>}
             <div style={{ display: "flex", justifyContent: "space-between" }}><span>IVA (13%)</span><span>${detalleVenta.iva.toFixed(2)}</span></div>
             <div style={{ display: "flex", justifyContent: "space-between", fontWeight: 800, fontSize: 15 }}><span>Total</span><span>${detalleVenta.total.toFixed(2)}</span></div>
           </div>

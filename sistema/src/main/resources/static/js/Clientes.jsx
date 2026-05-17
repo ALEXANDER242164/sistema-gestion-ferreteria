@@ -3,7 +3,7 @@ const { useState } = React;
 
 const EMPTY_CLI = { nombre: "", telefono: "", email: "" };
 
-function Clientes({ clientes, setClientes, role }) {
+function Clientes({ clientes, setClientes, role, ventas = [] }) {
   const esAdmin = role === "admin";
   const [busqueda, setBusqueda] = useState("");
   const [modal, setModal] = useState(null); // null | "form" | "historial"
@@ -11,7 +11,14 @@ function Clientes({ clientes, setClientes, role }) {
   const [editando, setEditando] = useState(null);
   const [clienteDetalle, setClienteDetalle] = useState(null);
 
-  const filtrados = clientes.filter(c =>
+  const clientesConHistorial = clientes.map(c => ({
+    ...c,
+    historial: ventas
+      .filter(v => v.cliente === c.nombre)
+      .map(v => ({ id: v.id, fecha: v.fecha, total: v.total, productos: v.productos || [] }))
+  }));
+
+  const filtrados = clientesConHistorial.filter(c =>
     !busqueda ||
     c.nombre.toLowerCase().includes(busqueda.toLowerCase()) ||
     c.telefono.includes(busqueda)

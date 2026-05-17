@@ -115,16 +115,37 @@ function Ventas({ productos, setProductos, clientes, onVentaCreada }) {
     else { if (confirm(`¿Aplicar descuento del ${pct}%?`)) setDescuento(pct); }
   }
 
-  function procesarPago() {
-    if (!metodoPago) return;
-    const id = `VEN-${String(Math.floor(100000 + Math.random() * 900000))}`;
+function procesarPago() {
+  if (!metodoPago) return;
+  const body = {
+    fecha: new Date().toLocaleString("es-GT"),
+    empleado: "Pedro Alvarado",
+    cliente: cliente.nombre || "-",
+    metodoPago,
+    subTotal: subtotal,
+    iva,
+    descuento: descuento || 0,
+    total,
+    items: carrito.map(i => ({
+      productId: parseInt(i.id),
+      nombre: i.nombre,
+      cantidad: i.cantidad,
+      precio: i.precio,
+    })),
+  };
+  fetch('http://localhost:8080/api/sales', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(body)
+  })
+  .then(res => res.json())
+  .then(data => {
     const venta = {
-      id, fecha: new Date().toLocaleString("es-GT"), empleado: "Pedro Alvarado",
-      cliente: cliente.nombre || "-", metodoPago,
-      productos: carrito.map(i => ({ nombre: i.nombre, cantidad: i.cantidad, precio: i.precio })),
-      subtotal, iva, descuento: descuento || 0, total,
+      id: String(data.id), fecha: data.fecha, empleado: data.empleado,
+      cliente: data.cliente, metodoPago: data.metodoPago,
+      productos: (data.items || []).map(i => ({ nombre: i.nombre, cantidad: i.cantidad, precio: i.precio })),
+      subTotal: data.subTotal, iva: data.iva, descuento: data.descuento, total: data.total,
     };
-    // Descontar stock
     setProductos(ps => ps.map(p => {
       const item = carrito.find(i => i.id === p.id);
       return item ? { ...p, stock: p.stock - item.cantidad } : p;
@@ -132,7 +153,9 @@ function Ventas({ productos, setProductos, clientes, onVentaCreada }) {
     onVentaCreada(venta);
     setRecibo(venta);
     setModal("recibo");
-  }
+  });
+}
+
 
   function nuevaVenta() {
     setCarrito([]); setDescuento(null); setCliente({ nombre: "", telefono: "" });
@@ -299,8 +322,8 @@ function Ventas({ productos, setProductos, clientes, onVentaCreada }) {
               </tbody>
             </table>
             <div style={{ display: "flex", flexDirection: "column", gap: 4, fontSize: 13 }}>
-              <div style={{ display: "flex", justifyContent: "space-between" }}><span>Subtotal</span><span>${recibo.subtotal.toFixed(2)}</span></div>
-              {recibo.descuento > 0 && <div style={{ display: "flex", justifyContent: "space-between", color: "#ea580c" }}><span>Descuento ({recibo.descuento}%)</span><span>−${(recibo.subtotal * recibo.descuento / 100).toFixed(2)}</span></div>}
+              <div style={{ display: "flex", justifyContent: "space-between" }}><span>Subtotal</span><span>${recibo.subTotal.toFixed(2)}</span></div>
+              {recibo.descuento > 0 && <div style={{ display: "flex", justifyContent: "space-between", color: "#ea580c" }}><span>Descuento ({recibo.descuento}%)</span><span>−${(recibo.subTotal * recibo.descuento / 100).toFixed(2)}</span></div>}
               <div style={{ display: "flex", justifyContent: "space-between" }}><span>IVA (13%)</span><span>${recibo.iva.toFixed(2)}</span></div>
               <div style={{ display: "flex", justifyContent: "space-between", fontWeight: 800, fontSize: 15, paddingTop: 6, borderTop: "2px solid #111827", marginTop: 4 }}><span>TOTAL</span><span>${recibo.total.toFixed(2)}</span></div>
             </div>
