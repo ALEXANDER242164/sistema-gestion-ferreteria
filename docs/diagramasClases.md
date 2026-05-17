@@ -1,11 +1,7 @@
-## Diagrama de clases primera versión
+## Diagrama de clases
 
-![DiagramaClases](assets/Diagrama%20de%20clase%20Gestion%20ferretería.png)
+![DiagramaClases](assets/diagramaClases.png)
 
-## Diagrama de clases segunda versión
+## Diagrama de clases – Solo patrones de diseño
 
-![DiagramaClases](assets/Diagrama%20de%20clases.png)
-
-## Diagrama de clases tercera versión 
-
-![DiagramaClases](assets/diagramaClase.png)
+![DiagramaClasesPatrones](assets/diagramaClasesSoloPatronesDiseño.png)

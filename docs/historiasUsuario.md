@@ -235,6 +235,7 @@ Como vendedor, quiero poder agregar ciertos descuentos ya establecidos en un ven
     - 10%
     - 15% 
     - 20%
+    - 50%
 - Dado que el vendedor selecciona un descuento, entonces el sistema debe de mostrar un mensaje de confirmación y aplicarlo.
 - Dado que el vendedor selecciona otro descuento, el sistema debe de quitar el descuento previo y aplicar el nuevo.
 - Dado que el vendedor deselecciona un descuento, entonces el sistema debe de mostrar un mensaje de confirmación y retirarlo.

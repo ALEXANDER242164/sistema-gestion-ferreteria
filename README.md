@@ -38,29 +38,70 @@ El sistema contará con los siguientes módulos principales:
 
 ## Arquitectura y Tecnologías
 
-- **Backend:** Java
-- **Frontend:** HTML, CSS y JavaScript
-- **Arquitectura:** El proyecto sigue un patrón de diseño MVC (Modelo-Vista-Controlador) para separar la lógica de negocio, los datos y la presentación.
+- **Backend:** Java 17 · Spring Boot 3.2.5 · Spring Data JPA · H2 Database
+- **Frontend:** HTML, CSS y JavaScript (componentes React/JSX servidos por Spring Boot)
+- **Arquitectura:** MVC (Modelo-Vista-Controlador)
+- **Patrones de diseño implementados:**
+  - **Strategy** — Descuentos (sin descuento / porcentaje) y métodos de pago (efectivo / tarjeta)
+  - **Factory Method** — Creación de empleados según su rol (administrador / vendedor)
+  - **Observer** — Alertas automáticas de stock bajo
 
 ## Estructura del Repositorio
 
-```
+```text
 .
 ├── docs/               # Documentación del diseño (requisitos, diagramas UML, etc.)
+│   └── assets/         # Imágenes de los diagramas
 ├── sistema/            # Raíz del proyecto Maven
 │   ├── pom.xml         # Archivo de configuración de Maven
 │   └── src/
 │       ├── main/
-│       │   └── java/
-│       │       └── com/
-│       │           └── proyecto/
-│       │               ├── controller/
-│       │               ├── model/
-│       │               ├── service/
-│       │               └── Main.java   # Punto de entrada de la aplicación
+│       │   ├── java/
+│       │   │   └── com/proyecto/
+│       │   │       ├── controller/
+│       │   │       ├── model/
+│       │   │       ├── repository/
+│       │   │       ├── service/
+│       │   │       └── Main.java   # Punto de entrada de la aplicación
+│       │   └── resources/
+│       │       ├── static/         # Frontend (HTML, CSS, JS)
+│       │       └── application.properties
 │       └── test/       # Pruebas unitarias
 └── README.md           # Este archivo
 ```
+
+## Cómo Compilar y Ejecutar
+
+### Requisitos previos
+
+- **Java 17** (JDK) — [Descargar](https://adoptium.net/)
+- **Maven 3.6+** — [Descargar](https://maven.apache.org/download.cgi)
+
+### Pasos
+
+```bash
+# 1. Entrar a la carpeta del proyecto Maven
+cd sistema
+
+# 2. Compilar e instalar dependencias
+mvn clean install
+
+# 3. Iniciar el servidor
+mvn spring-boot:run
+```
+
+### URLs
+
+| Recurso | URL |
+| --- | --- |
+| Aplicación | `http://localhost:8080` |
+| Consola H2 (base de datos) | `http://localhost:8080/h2-console` |
+
+**Configuración de la consola H2:**
+
+- JDBC URL: `jdbc:h2:file:./data/ferreteria`
+- Usuario: `sa`
+- Contraseña: *(dejar vacía)*
 
 ## Documentación
 
@@ -68,7 +109,8 @@ Toda la documentación de análisis y diseño se encuentra en la carpeta [`docs/
 
 - **Requisitos:** [requisitos.md](docs/requisitos.md) - Requisitos funcionales y no funcionales.
 - **Historias de Usuario:** [historiasUsuario.md](docs/historiasUsuario.md) - Historias de usuario con criterios de aceptación.
-- **Diagramas de Clases:** [diagramasClases.md](docs/diagramasClases.md) - Diagramas de clases del sistema (en progreso).
-- **Diagramas de Casos de Uso:** [diagramaCasosUso.md](docs/diagramaCasosUso.md) - Diagramas de casos de uso (pendientes).
-- **Diagramas de Actividad:** [diagramasActividad.md](docs/diagramasActividad.md) - Diagramas de actividad (pendientes).
-- **Diagramas de Secuencia:** [diagramasSecuencia.md](docs/diagramasSecuencia.md) - Diagramas de secuencia (pendientes).
+- **Diagramas de Clases:** [diagramasClases.md](docs/diagramasClases.md) - Diagramas de clases del sistema.
+- **Diagramas de Casos de Uso:** [diagramaCasosUso.md](docs/diagramaCasosUso.md) - Diagramas de casos de uso.
+- **Diagramas de Actividad:** [diagramasActividad.md](docs/diagramasActividad.md) - Diagramas de actividad.
+- **Diagramas de Secuencia:** [diagramasSecuencia.md](docs/diagramasSecuencia.md) - Diagramas de secuencia.
+- **Diagrama de Estado:** [diagramasEstado.md](docs/diagramasEstado.md) - Diagrama de estado del sistema.

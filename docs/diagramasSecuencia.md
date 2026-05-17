@@ -1,3 +1,3 @@
 ### Diagrama de secuencia
 
-![DiagramaSecuencia](assets/DiagramitaSecuencia.png)
+![DiagramaSecuencia](assets/diagramaSecuencia.png)
