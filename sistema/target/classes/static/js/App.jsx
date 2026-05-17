@@ -10,11 +10,11 @@ function App() {
 
   const [user, setUser] = useState(savedUser);
   const [nav, setNav] = useState(saved.nav || "inventario");
-  const [productos, setProductos] = useState(saved.productos || PRODUCTOS_INIT);
-  const [proveedores, setProveedores] = useState(saved.proveedores || PROVEEDORES_INIT);
-  const [clientes, setClientes] = useState(saved.clientes || CLIENTES_INIT);
-  const [ventas, setVentas] = useState(saved.ventas || VENTAS_INIT);
-  const [ordenes, setOrdenes] = useState(saved.ordenes || ORDENES_INIT);
+  const [productos, setProductos] = useState([]);
+  const [proveedores, setProveedores] = useState([]);
+  const [clientes, setClientes] = useState([]);
+  const [ventas, setVentas] = useState([]);
+  const [ordenes, setOrdenes] = useState([]);
 
 
   useEffect(() => {
@@ -43,9 +43,53 @@ function App() {
         direccion: s.direccion,
         telefono: s.telefono,
         email: s.email,
-        productos: s.productos || [],
+        productos: s.productosSuministrados || [],
       }))));
   }, [user]);
+
+  useEffect(() => {
+    if(!user) return;
+    fetch('http://localhost:8080/api/customers')
+      .then(res => res.json())
+      .then(data => setClientes(data.map(c => ({
+        id: String(c.id),
+        nombre: c.nombre,
+        telefono: c.telefono,
+        email: c.email,
+      }))))
+  }, [user]);
+
+  useEffect(() => {
+    if (!user) return;
+    fetch('http://localhost:8080/api/orders')
+      .then(res => res.json())
+      .then(data => setOrdenes(data.map(o => ({
+        id: String(o.id),
+        fecha: o.fecha,
+        proveedor: o.proveedor,
+        estado: o.estado,
+        productos: o.productos || [],
+        total: o.total,
+      }))));
+  }, [user]);
+  
+  useEffect(() => {
+  if (!user) return;
+  fetch('http://localhost:8080/api/sales')
+    .then(res => res.json())
+    .then(data => setVentas(data.map(v => ({
+      id: String(v.id),
+      fecha: v.fecha,
+      empleado: v.empleado,
+      cliente: v.cliente,
+      metodoPago: v.metodoPago,
+      subTotal: v.subTotal ?? v.subtotal,
+      iva: v.iva,
+      descuento: v.descuento,
+      total: v.total,
+      productos: (v.items || []).map(i => ({ nombre: i.nombre, cantidad: i.cantidad, precio: i.precio })),
+    }))));
+}, [user]);
 
 
 
@@ -68,14 +112,6 @@ function App() {
 
   function handleVentaCreada(venta) {
     setVentas(vs => [venta, ...vs]);
-    if (venta.cliente && venta.cliente !== "-") {
-      setClientes(cs => cs.map(c => {
-        if (c.nombre === venta.cliente) {
-          return { ...c, historial: [{ id: venta.id, fecha: venta.fecha, total: venta.total, productos: venta.productos }, ...(c.historial || [])] };
-        }
-        return c;
-      }));
-    }
   }
 
   useEffect(() => {
@@ -92,7 +128,7 @@ function App() {
       case "ventas": return <Ventas productos={productos} setProductos={setProductos} clientes={clientes} onVentaCreada={handleVentaCreada} />;
       case "reportes": return role === "admin" ? <Reportes ventas={ventas} ordenes={ordenes} setOrdenes={setOrdenes} proveedores={proveedores} productos={productos} /> : null;
       case "proveedores": return <Proveedores proveedores={proveedores} setProveedores={setProveedores} role={role} />;
-      case "clientes": return <Clientes clientes={clientes} setClientes={setClientes} role={role} />;
+      case "clientes": return <Clientes clientes={clientes} setClientes={setClientes} role={role} ventas={ventas} />;
       default: return null;
     }
   };

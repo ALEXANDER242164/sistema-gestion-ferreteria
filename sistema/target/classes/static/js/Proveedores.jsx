@@ -30,7 +30,7 @@ function Proveedores({ proveedores, setProveedores, role }) {
       direccion: form.direccion,
       telefono: form.telefono,
       email: form.email,
-      productos: form.productos || []
+      productosSuministrados: form.productos || []
     };
     if (editando) {
       fetch(`http://localhost:8080/api/suppliers/${parseInt(editando)}`, {
@@ -40,7 +40,7 @@ function Proveedores({ proveedores, setProveedores, role }) {
       })
       .then(res => res.json())
       .then(data => {
-        const actualizado = { id: String(data.id), nombre: data.nombre, contacto: data.contacto, direccion: data.direccion, telefono: data.telefono, email: data.email, productos: data.productos || [] };
+        const actualizado = { id: String(data.id), nombre: data.nombre, contacto: data.contacto, direccion: data.direccion, telefono: data.telefono, email: data.email, productos: data.productosSuministrados || [] };
         setProveedores(ps => ps.map(p => p.id === editando ? actualizado : p));
       });
     } else {
@@ -51,7 +51,7 @@ function Proveedores({ proveedores, setProveedores, role }) {
       })
       .then(res => res.json())
       .then(data => {
-        const nuevo = { id: String(data.id), nombre: data.nombre, contacto: data.contacto, direccion: data.direccion, telefono: data.telefono, email: data.email, productos: data.productos || [] };
+        const nuevo = { id: String(data.id), nombre: data.nombre, contacto: data.contacto, direccion: data.direccion, telefono: data.telefono, email: data.email, productos: data.productosSuministrados || [] };
         setProveedores(ps => [...ps, nuevo]);
       });
     }
