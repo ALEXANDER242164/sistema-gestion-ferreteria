@@ -17,13 +17,11 @@ Este repositorio contiene el código fuente y la documentación para un sistema 
 
 ## Participantes
 
-| Participante | GitHub |
-| --- | --- |
-| [![Rolando Cabrera](https://github.com/RolandoCabreraxyz.png?size=40)](https://github.com/RolandoCabreraxyz) **CABRERA DZUL ROLANDO EMMANUEL** | [@RolandoCabreraxyz](https://github.com/RolandoCabreraxyz) |
-| [![Alexander Castañeda](https://github.com/ALEXANDER242164.png?size=70)](https://github.com/ALEXANDER242164) **CASTAÑEDA EUAN ALFREDO ALEXANDER** | [@ALEXANDER242164](https://github.com/ALEXANDER242164) |
-| [![Oswaldo Castillo](https://github.com/oswaldo-castillo.png?size=70)](https://github.com/oswaldo-castillo) **CASTILLO MACHADO OSWALDO** | [@oswaldo-castillo](https://github.com/oswaldo-castillo) |
-| [![Paola Parra](https://github.com/Pao-x.png?size=40)](https://github.com/Pao-x) **PARRA CANCHE PAOLA LIZZETH** | [@Pao-x](https://github.com/Pao-x) |
-| [![Luis Villanueva](https://github.com/Luis-villanueva-valdivia.png?size=70)](https://github.com/Luis-villanueva-valdivia) **VILLANUEVA VALDIVIA LUIS ADRIAN** | [@Luis-villanueva-valdivia](https://github.com/Luis-villanueva-valdivia) |
+- [@RolandoCabreraxyz](https://github.com/RolandoCabreraxyz) — CABRERA DZUL ROLANDO EMMANUEL
+- [@ALEXANDER242164](https://github.com/ALEXANDER242164) — CASTAÑEDA EUAN ALFREDO ALEXANDER
+- [@oswaldo-castillo](https://github.com/oswaldo-castillo) — CASTILLO MACHADO OSWALDO
+- [@Pao-x](https://github.com/Pao-x) — PARRA CANCHE PAOLA LIZZETH
+- [@Luis-villanueva-valdivia](https://github.com/Luis-villanueva-valdivia) — VILLANUEVA VALDIVIA LUIS ADRIAN
 
 ## Descripción del Proyecto
 
