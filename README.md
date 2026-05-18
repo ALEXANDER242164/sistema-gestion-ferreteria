@@ -113,4 +113,5 @@ Toda la documentación de análisis y diseño se encuentra en la carpeta [`docs/
 - **Diagramas de Casos de Uso:** [diagramaCasosUso.md](docs/diagramaCasosUso.md) - Diagramas de casos de uso.
 - **Diagramas de Actividad:** [diagramasActividad.md](docs/diagramasActividad.md) - Diagramas de actividad.
 - **Diagramas de Secuencia:** [diagramasSecuencia.md](docs/diagramasSecuencia.md) - Diagramas de secuencia.
+- **Diagramas de Comunicación:** [diagramasComunicacion.md](docs/diagramasComunicacion.md) - Diagramas de comunicación del sistema.
 - **Diagrama de Estado:** [diagramasEstado.md](docs/diagramasEstado.md) - Diagrama de estado del sistema.
