@@ -6,6 +6,7 @@ Este repositorio contiene el código fuente y la documentación para un sistema 
 
 ## Tabla de Contenidos
 
+- [Participantes](#participantes)
 - [Descripción del Proyecto](#descripción-del-proyecto)
 - [Prototipos de Interfaz](#prototipos-de-interfaz)
 - [Características](#características)
@@ -13,6 +14,14 @@ Este repositorio contiene el código fuente y la documentación para un sistema 
 - [Estructura del Repositorio](#estructura-del-repositorio)
 - [Cómo Compilar y Ejecutar](#cómo-compilar-y-ejecutar)
 - [Documentación](#documentación)
+
+## Participantes
+
+- [@RolandoCabreraxyz](https://github.com/RolandoCabreraxyz) — CABRERA DZUL ROLANDO EMMANUEL
+- [@ALEXANDER242164](https://github.com/ALEXANDER242164) — CASTAÑEDA EUAN ALFREDO ALEXANDER
+- [@oswaldo-castillo](https://github.com/oswaldo-castillo) — CASTILLO MACHADO OSWALDO
+- [@Pao-x](https://github.com/Pao-x) — PARRA CANCHE PAOLA LIZZETH
+- [@Luis-villanueva-valdivia](https://github.com/Luis-villanueva-valdivia) — VILLANUEVA VALDIVIA LUIS ADRIAN
 
 ## Descripción del Proyecto
 
