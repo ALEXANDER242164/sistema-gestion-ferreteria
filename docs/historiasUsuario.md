@@ -17,12 +17,13 @@ Como admin, quiero crear, visualizar y modificar los productos que se encuentran
 - Dado que se visualiza algun producto, entonces debe de existir una opcion que diga "Modificar"
 - Dado que se esta en el catalogo, entonces debe de existir un boton en el catalogo que diga "Añadir Producto".
 - Dado que creo un producto, entonces se debe de registrar con la siguiente información:
-    - Nombre
+    - Nombre del producto
     - Descripción
-    - ID Producto
-    - Categoria 
+    - ID Producto (El ID debe de generarse solo)
+    - Categoria (Se debe desplegar las opciones disponibles)
     - Precio
-    - Cantidad en stock
+    - Stock actual
+    - Stock mínimo
 
 ## Historia de usuario No.2
 
