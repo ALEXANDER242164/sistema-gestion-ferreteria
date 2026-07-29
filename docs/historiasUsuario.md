@@ -9,7 +9,7 @@
 El sistema debe permitir la creación y mantenimiento de un catálogo de productos con detalles como nombre, descripción, número de artículo, categoría, precio y cantidad en stock.
 
 #### Descripción
-Como admin, quiero crear, visualizar y modificar los productos que se encuentran en el catalogo para mantenerlo actualizado.
+Como administrador, quiero crear, visualizar y modificar los productos que se encuentran en el catalogo para mantenerlo actualizado.
 
 #### Criterios de aceptación
 - Dado que se encuentrar en el catalogo, entonces debe verse los productos en forma de lista.
@@ -33,14 +33,23 @@ Como admin, quiero crear, visualizar y modificar los productos que se encuentran
 Debe permitir la actualización de los niveles de inventario cuando se realicen compras o ventas.
 
 #### Descripción
-Como usuario, quiero visualizar la cantidad disponible y el stock mínimo de cada producto, para conocer el estado actual del inventario
+Como administrador de inventario, quiero visualizar la cantidad disponible de cada producto junto con su stock mínimo y estado de abastecimiento, para identificar oportunamente productos con riesgo de desabasto.
 
-#### Criterios de aceptación
-- Dado que el usuario accede al catálogo de productos, entonces debe visualizar por cada producto:
-    - La cantidad disponible (ej: 5 unidades)
-    - El stock mínimo definido
-- Dado que el sistema muestra los productos, entonces debe incluir un indicador visual del nivel de stock mediante una barra.
-- Dado que el nivel de stock cambia, entonces la barra debe reflejar proporcionalmente la cantidad disponible respecto al stock mínimo.
+Criterios de aceptación
+- Dado que el administrador se encuentra en la pantalla de inventario, cuando consulte el listado de productos, entonces deberá visualizar:
+    - Nombre del producto
+    - Categoría
+    - Precio
+    - Cantidad disponible
+    - Stock mínimo
+    - Estado del inventario
+    - Indicador visual de stock
+-Dado que la cantidad disponible sea mayor al stock mínimo, cuando se visualice el producto, entonces el estado deberá mostrarse como "Ok".
+-Dado que la cantidad disponible sea menor o igual al stock mínimo, cuando se visualice el producto, entonces el estado deberá mostrarse como "Stock bajo".
+-Dado que el sistema muestre un producto, cuando se renderice el indicador visual, entonces deberá mostrarse una barra proporcional calculada con base en la relación entre cantidad disponible y stock mínimo.
+-Dado que la cantidad disponible sea igual a cero, cuando se visualice el producto, entonces el estado deberá mostrarse como "Sin stock".
+
+# Modulo Inventario
 
 ## Historia de usuario No.3
 
@@ -49,16 +58,28 @@ Como usuario, quiero visualizar la cantidad disponible y el stock mínimo de cad
 #### Requisito funcional
 Debe generar alertas cuando los niveles de inventario sean bajos.
 
+#### Logica de negocio
+- El vendedor y el admnistrador son personal actorizado y pueden acceder a esta funcionalidad.
+- Es stock minimo si "stockActual <= stockMinimo"
+
 #### Descripción
-Como usuario, quiero identificar rápidamente los productos con stock bajo, para tomar acciones de reposición oportunamente.
+**Como** personal autorizado, **quiero** identificar rápidamente los productos con stock bajo en la pagina del inventario, **para** tomar acciones de reposición oportunamente.
 
 #### Criterios de aceptación
 
-- Dado que existen productos con stock menor al mínimo, entonces el sistema debe:
-    - Mostrar una etiqueta de “Stock Bajo” en cada producto afectado
-    - Resaltar visualmente el producto mediante colores (naranja o rojo)
-- Dado que existen productos con stock bajo, entonces debe mostrarse un contador general indicando la cantidad (ej: “Stock Bajo (5)”).
-- Dado que el usuario accede al catálogo, entonces debe existir una opción para filtrar o identificar fácilmente los productos con stock bajo.
+##### Escenario 1: Productos con stock bajo o nulo
+- **Dado** que soy personal autorizado, estoy en el modulo de inventario y existen productos que cumplen con la condición de stock mínimo, 
+- **Cuando** el se haga una venta o modificacion de inventario y el producto se encuentre con stockMinimo,
+- **entonces** el sistema debe mostrar por cada producto afectado:
+    - Una etiqueta con el texto "Stock bajo"
+    - Resaltar visualmente con el color naranja (Hex: #FF8C00) si el stock es bajo es decir que el stockActual <= stockMinimo
+    - Resaltar visualmente con el color rojo (Hex: #FF0000) si el stock es critico es decir el stockActual = 0
+
+#### Escenario 2: Filtrado de productos con stock bajo
+- **Dado** el personal autorizado esta en el modulo de inventario, 
+- **Cuando** se queria ver los productos con stockBajo y seleccione la opcion de filtrado
+- **entonces** debe mostrarse todo los productos en listo de mayor a menor (usando como referencia aquello con inventario bajo o nulo), lo de inventario nulo deben de estar ordenas de forma alfabetica. 
+
 - Dado que un producto tiene stock suficiente, entonces no debe mostrarse como alerta ni destacarse visualmente.
 
 # Registro de Ventas y Compras
